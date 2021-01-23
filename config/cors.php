@@ -23,9 +23,9 @@ return [
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['*', 'db'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['*', 'db'],
 
     'max_age' => 0,
 
