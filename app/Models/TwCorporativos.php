@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Database\Factories\CorporativosFactory;
 
 class TwCorporativos extends Model
 {
@@ -15,4 +16,9 @@ class TwCorporativos extends Model
         'D_FechaIncorporacion',
         'deleted_at'
     ];
+
+    protected static function newFactory()
+    {
+        return CorporativosFactory::new();
+    }
 }
