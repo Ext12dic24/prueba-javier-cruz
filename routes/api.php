@@ -44,6 +44,8 @@ Route::group([], function () {
         Route::post('update-corporativo/{id}', 'App\Http\Controllers\CorporativosController@update');
         Route::get('delete-corporativo/{id}', 'App\Http\Controllers\CorporativosController@delete');
 
+        Route::get('read-full-corporativo/{id}', 'App\Http\Controllers\CorporativosController@read3');
+
         //CRUD empresas corporativos
         Route::post('create-empresa-corporativo', 'App\Http\Controllers\EmpresasCorporativosController@create');
         Route::get('read-empresa-corporativo/{id}', 'App\Http\Controllers\EmpresasCorporativosController@read1');
@@ -71,6 +73,8 @@ Route::group([], function () {
         Route::get('read-documentos', 'App\Http\Controllers\DocumentosController@read2');
         Route::post('update-documento/{id}', 'App\Http\Controllers\DocumentosController@update');
         Route::get('delete-documento/{id}', 'App\Http\Controllers\DocumentosController@delete');
+
+        Route::get('read-documento-corporativos-asociados/{id}', 'App\Http\Controllers\DocumentosController@read3');
 
         //CRUD documentos corporativos
         Route::post('create-documento-corporativo', 'App\Http\Controllers\DocumentosCorporativosController@create');

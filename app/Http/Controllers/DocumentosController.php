@@ -132,4 +132,31 @@ class DocumentosController extends Controller
             ], 404);
         }
     }
+
+    public function read3(Request $request)
+    {
+        Validator::make([
+            'id' => $request->id
+        ], [
+            'id' => 'required|numeric',
+        ])->validate();
+
+        if($res = TwDocumentos::find($request->id)){
+
+            $res->tw_documentos_corporativos_asociados;
+
+            foreach ($res->tw_documentos_corporativos_asociados as $doc_corp) {
+                $doc_corp->tw_corporativo;
+            }
+
+            return response()->json([
+                'respuesta' => 'Se ha recuperado la información del registro',
+                'datos' => $res
+            ], 200);
+        }else{
+            return response()->json([
+                'respuesta' => 'No se ha podido encontrar ninguna coincidencia para el registro con id: ' . $request->id
+            ], 404);
+        }
+    }
 }

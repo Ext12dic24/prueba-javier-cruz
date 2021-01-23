@@ -156,4 +156,34 @@ class CorporativosController extends Controller
             ], 404);
         }
     }
+
+    public function read3(Request $request)
+    {
+        Validator::make([
+            'id' => $request->id
+        ], [
+            'id' => 'required|numeric',
+        ])->validate();
+
+        if($res = TwCorporativos::find($request->id)){
+            //carga informacion extra
+            $res->tw_contactos_corporativos;
+            $res->tw_contratos_corporativos;
+            $res->tw_empresas_corporativos;
+            $res->tw_documentos_corporativos;
+
+            foreach ($res->tw_documentos_corporativos as $doc) {
+                $doc->tw_documento;
+            }
+
+            return response()->json([
+                'respuesta' => 'Se ha recuperado la información completa del registro',
+                'datos' => $res
+            ], 200);
+        }else{
+            return response()->json([
+                'respuesta' => 'No se ha podido encontrar ninguna coincidencia para el registro con id: ' . $request->id
+            ], 404);
+        }
+    }
 }

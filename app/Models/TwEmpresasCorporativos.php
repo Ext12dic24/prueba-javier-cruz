@@ -14,4 +14,9 @@ class TwEmpresasCorporativos extends Model
     protected $dates = [
         'deleted_at'
     ];
+
+    public function tw_corporativos()
+    {
+        return $this->belongsTo(TwCorporativos::class, 'tw_corporativos_id');
+    }
 }

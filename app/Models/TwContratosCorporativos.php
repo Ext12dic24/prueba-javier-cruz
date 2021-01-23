@@ -13,4 +13,9 @@ class TwContratosCorporativos extends Model
         'D_FechaInicio',
         'D_FechaFin'
     ];
+
+    public function tw_corporativos()
+    {
+        return $this->belongsTo(TwCorporativos::class, 'tw_corporativos_id');
+    }
 }
